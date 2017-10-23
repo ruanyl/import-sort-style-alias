@@ -1,3 +1,22 @@
-# import-sort-style-eslint
+# import-sort-style-alias
 
-Renke's personal style for [import-sort](https://github.com/renke/import-sort). 
+sort webpack resolve.alias separately first by the order defined in the array, then by member name
+
+package.json
+```
+  "importSort": {
+    ".js, .jsx, .es6, .es": {
+      "parser": "babylon",
+      "style": "alias",
+      "custom": {
+        "alias": ["components", "modules"]
+      }
+    },
+    ".ts, .tsx": {
+      "parser": "typescript",
+      "style": "alias",
+      "custom": {
+        "alias": ["components", "modules"]
+      }
+    }
+```
