@@ -105,9 +105,7 @@ export default function(styleApi: IStyleAPI, file?: string): Array<IStyleItem> {
 
   const importSortConfig = JSON.parse(readFileSync(`${findRoot(file)}/package.json`, "utf-8")).importSort;
   const alias = getAlias(extname(file!), importSortConfig);
-  console.log(alias);
   const customRules: IStyleItem[] = createAliasRules(styleApi, alias);
-  console.log(customRules);
 
   return [
     // import "foo"
