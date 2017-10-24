@@ -1,6 +1,6 @@
 # import-sort-style-alias
 
-sort webpack resolve.alias separately first by the order defined in the array, then by member name
+Sort resolve.alias separately, first by the order defined in the array, then by member name
 
 ```
 npm i import-sort-style-alias --save-dev
