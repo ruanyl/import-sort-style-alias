@@ -11,7 +11,6 @@ const hasAlias = (alias: any) => (imported: IImport) => {
 };
 
 const createAliasRules = (styleApi: IStyleAPI, alias: string[]): IStyleItem[] => {
-  console.log(alias);
   const {
     and,
     hasDefaultMember,
@@ -72,17 +71,7 @@ const createAliasRules = (styleApi: IStyleAPI, alias: string[]): IStyleItem[] =>
   }, []);
 };
 
-const getAlias = (extension: string, config: any) => {
-  let alias: string[] = [];
-  Object.keys(config).forEach((key: string) => {
-    if (key.indexOf(extension) >= 0) {
-      alias = config[key].custom && config[key].custom.alias;
-    }
-  });
-  return alias || [];
-};
-
-export default function(styleApi: IStyleAPI, file?: string): Array<IStyleItem> {
+export default function(styleApi: IStyleAPI, file?: string, options?: any): IStyleItem[] {
   const {
     and,
     hasDefaultMember,
@@ -103,8 +92,7 @@ export default function(styleApi: IStyleAPI, file?: string): Array<IStyleItem> {
     unicode,
   } = styleApi;
 
-  const importSortConfig = JSON.parse(readFileSync(`${findRoot(file)}/package.json`, "utf-8")).importSort;
-  const alias = getAlias(extname(file!), importSortConfig);
+  const alias = options.alias || [];
   const customRules: IStyleItem[] = createAliasRules(styleApi, alias);
 
   return [
