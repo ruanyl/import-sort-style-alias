@@ -15,9 +15,8 @@
   "repository": "https://github.com/ruanyl/import-sort-style-alias.git",
   "license": "MIT",
   "dependencies": {
-    "find-root": "^1.1.0",
-    "import-sort-parser": "^3.0.0",
-    "import-sort-style": "^3.0.0"
+    "import-sort-parser": "^4.0.0",
+    "import-sort-style": "^4.0.0"
   },
   "devDependencies": {
     "@types/chai": "^4.0.0",
