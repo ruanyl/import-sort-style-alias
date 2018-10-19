@@ -4,6 +4,7 @@
     "ordered-imports": false,
     "object-literal-sort-keys": false,
     "no-console": false,
-    "no-unused-variable": [true, "react"]
+    "no-unused-variable": [true, "react"],
+    "max-line-length": false
   }
 }

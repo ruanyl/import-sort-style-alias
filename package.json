@@ -1,5 +1,5 @@
 {
-  "name": "import-sort-style-alias",
+  "name": "import-sort-style-as",
   "version": "1.2.0",
   "description": "import-sort style which take resolve.alias into account",
   "main": "lib/index.js",
@@ -12,7 +12,7 @@
     "watch:test": "mocha -w --compilers ts:ts-node/register,tsx:ts-node/register --recursive test"
   },
   "author": "Yulong Ruan <ruanyu1@gmail.com> (https://github.com/ruanyl)",
-  "repository": "https://github.com/ruanyl/import-sort-style-alias.git",
+  "repository": "https://github.com/ruanyl/import-sort-style-as.git",
   "license": "MIT",
   "dependencies": {
     "import-sort-parser": "^4.0.0",
