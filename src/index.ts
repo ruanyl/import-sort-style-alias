@@ -13,6 +13,12 @@ const customSort = (comparator) =>
   (first: string, second: string) =>
   comparator(first.toLowerCase(), second.toLowerCase());
 
+const isStylesheet = (imported: IImport) => {
+  return imported.moduleName.indexOf(".css") > 0 ||
+    imported.moduleName.indexOf(".sass") > 0 ||
+    imported.moduleName.indexOf(".scss") > 0;
+};
+
 export default function(styleApi: IStyleAPI, file?: string, options?: any): IStyleItem[] {
   const {
     and,
@@ -58,7 +64,7 @@ export default function(styleApi: IStyleAPI, file?: string, options?: any): ISty
     {separator: true},
 
     // import "./foo"
-    {match: and(hasNoMember, isRelativeModule)},
+    {match: and(hasNoMember, isRelativeModule, not(isStylesheet))},
     {separator: true},
 
     // import * as _ from "bar";
@@ -105,6 +111,10 @@ export default function(styleApi: IStyleAPI, file?: string, options?: any): ISty
     // import {Foo, bar, …} from "baz";
     // import {foo, bar, …} from "baz";
     {match: and(hasOnlyNamedMembers, isAbsoluteModule, not(hasAlias(alias))), sort: sortBy(comparator), sortNamedMembers: name(comparator)},
+
+    {separator: true},
+
+    {match: and(hasNoMember, isRelativeModule, isStylesheet), sort: sortBy(comparator)},
 
     {separator: true},
 
