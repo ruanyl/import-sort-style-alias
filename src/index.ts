@@ -63,10 +63,6 @@ export default function(styleApi: IStyleAPI, file?: string, options?: any): ISty
     {match: and(hasNoMember, isAbsoluteModule)},
     {separator: true},
 
-    // import "./foo"
-    {match: and(hasNoMember, isRelativeModule, not(isStylesheet))},
-    {separator: true},
-
     // import * as _ from "bar";
     {
       match: and(hasOnlyNamespaceMember, isAbsoluteModule, not(hasAlias(alias)), not(member(startsWithAlphanumeric))),
@@ -114,7 +110,10 @@ export default function(styleApi: IStyleAPI, file?: string, options?: any): ISty
 
     {separator: true},
 
+    // import './style.scss'
     {match: and(hasNoMember, isRelativeModule, isStylesheet), sort: sortBy(comparator)},
+    // import "./foo"
+    {match: and(hasNoMember, isRelativeModule, not(isStylesheet))},
 
     {separator: true},
 
