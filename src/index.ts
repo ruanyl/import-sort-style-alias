@@ -115,8 +115,6 @@ export default function(styleApi: IStyleAPI, file?: string, options?: any): ISty
     // import "./foo"
     {match: and(hasNoMember, isRelativeModule, not(isStylesheet))},
 
-    {separator: true},
-
     // import * as _ from "./bar";
     {match: and(hasOnlyNamespaceMember, isRelativeModule, not(member(startsWithAlphanumeric))), sort: sortBy(comparator)},
     // import * as Foo from "./bar";
